@@ -7,12 +7,15 @@ import {
 import Root from './Pages/Root';
 import Home from "./Pages/Home/Home";
 import Create from "./Pages/Create/Create";
+import Profile from "./Pages/Profile/profile";
+import Settingg from "./Pages/Setting/setting";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<Home />} />
       <Route path="create" element={<Create />} />
-      
+      <Route path="profile" element={<Profile />} />
+      <Route path="setting" element={<Settingg />} />
     </Route>
   )
 );
