@@ -28,7 +28,7 @@ const Appbar = ({ drawerWidth }) => {
                     color: "white",
                     flexGrow: 1,
                     textDecoration: "none",
-                    "&:hover": { fontSize: "22px" }
+                    fontSize: "22px"
                 }}>
                     My expenses
                 </Link>

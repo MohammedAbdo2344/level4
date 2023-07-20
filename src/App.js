@@ -9,6 +9,7 @@ import Home from "./Pages/Home/Home";
 import Create from "./Pages/Create/Create";
 import Profile from "./Pages/Profile/profile";
 import Settingg from "./Pages/Setting/setting";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
@@ -20,9 +21,8 @@ const router = createBrowserRouter(
   )
 );
 function App() {
-  return (
-    <RouterProvider router={router} />
-  );
+
+  return (<RouterProvider router={router} />);
 }
 
 export default App;

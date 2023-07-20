@@ -1,7 +1,5 @@
 import React from 'react';
 import { List, ListItemText, ListItem, ListItemButton, ListItemIcon } from '@mui/material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import CreateIcon from '@mui/icons-material/Create';
 import PersonIcon from '@mui/icons-material/Person';
