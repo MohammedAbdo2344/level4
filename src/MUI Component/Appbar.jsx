@@ -2,12 +2,12 @@ import React from 'react';
 import { Link, Avatar, Stack, IconButton, Typography, Toolbar, AppBar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Appbar = ({ drawerWidth }) => {
+const Appbar = ({ drawerWidth,showDrawer }) => {
     return (
         <AppBar sx={
             {
-                width: `calc(100% - ${drawerWidth}px)`,
-                ml: `${drawerWidth}px`
+                width: {sm:`calc(100% - ${drawerWidth}px)`},
+                ml: {xs:0 , sm:`${drawerWidth}px`}
             }
         } position="static">
             <Toolbar>
@@ -16,7 +16,11 @@ const Appbar = ({ drawerWidth }) => {
                     edge="start"
                     color="inherit"
                     aria-label="menu"
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 2 ,display:{sm:"none"}}}
+                    onClick={()=>{
+                        showDrawer();
+                    }}
+                    
                 >
                     <MenuIcon />
                 </IconButton>
@@ -32,7 +36,7 @@ const Appbar = ({ drawerWidth }) => {
                 }}>
                     My expenses
                 </Link>
-                <Stack direction="row" spacing={2}>
+                <Stack sx={{display:{xs:"none",sm:"flex"}}} direction="row" spacing={2}>
                     <Typography sx={{
                         display: "flex",
                         alignItems: "center"

@@ -4,35 +4,53 @@ import { Box, CssBaseline } from '@mui/material';
 import Appbar from '../MUI Component/Appbar';
 import Drawerr from '../MUI Component/drawer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Theme from '../Styles/Theme';
 
 const drawerWidth = 240;
 const Root = () => {
-    const [myMode, getMyMode] = useState(
+    // ---------------------------------------- Hooks ----------------------------------------
+    const [mode, getMyMode] = useState(
         localStorage.getItem("currentTheme") === null
             ? "light"
             : localStorage.getItem("currentTheme") === "light"
                 ? "light" : "dark"
     );
-    const darkTheme = createTheme({
-        palette: {
-            mode: myMode,
-        },
-    });
+    const theme = React.useMemo(() => createTheme(Theme(mode)), [mode]);
+
+    const [noneORBlock, setNoneORBlock] = useState("none");
+    const [drawerVariant, setdrawerVariant] = useState("permanent");
+    //---------------------------------------- Functions ----------------------------------------
+    const showDrawer = () => {
+        setdrawerVariant("temporary");
+        setNoneORBlock("block");
+    }
+    const hideDrawer = () => {
+        setdrawerVariant("permanent");
+        setNoneORBlock("none");
+    }
+    // ---------------------------------------- website ----------------------------------------
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={theme}>
             <CssBaseline />
             <div>
                 <Box sx={{ flexGrow: 1 }}>
-                    <Appbar drawerWidth={drawerWidth} />
-                    <Drawerr drawerWidth={drawerWidth} getMyMode={getMyMode} />
+                    <Appbar
+                        drawerWidth={drawerWidth}
+                        showDrawer={showDrawer}
+                    />
+                    <Drawerr
+                        drawerWidth={drawerWidth}
+                        getMyMode={getMyMode}
+                        noneORBlock={noneORBlock}
+                        drawerVariant={drawerVariant}
+                        hideDrawer={hideDrawer}
+                    />
                 </Box>
-                <Box sx={{ ml: `${drawerWidth}px`, display: "flex", justifyContent: "center" }} >
+                <Box sx={{ ml: { sm: `${drawerWidth}px` }, display: "flex", justifyContent: "center" }} >
                     <Outlet />
                 </Box>
             </div>
         </ThemeProvider>
-
-
     );
 }
 

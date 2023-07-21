@@ -9,6 +9,7 @@ import Home from "./Pages/Home/Home";
 import Create from "./Pages/Create/Create";
 import Profile from "./Pages/Profile/profile";
 import Settingg from "./Pages/Setting/setting";
+import Notfound from "./Pages/Notfound";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
       <Route path="create" element={<Create />} />
       <Route path="profile" element={<Profile />} />
       <Route path="setting" element={<Settingg />} />
+      <Route path="*" element={<Notfound/>} />
     </Route>
   )
 );
