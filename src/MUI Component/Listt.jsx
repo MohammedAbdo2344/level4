@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItemText, ListItem, ListItemButton, ListItemIcon, useTheme, Divider } from '@mui/material';
+import { List, ListItemText, ListItem, ListItemButton, ListItemIcon, useTheme } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import CreateIcon from '@mui/icons-material/Create';
 import PersonIcon from '@mui/icons-material/Person';
@@ -24,7 +24,9 @@ const Listt = () => {
         <List>
             {
                 lists.map((index) => (
-                    <ListItem sx={{
+                    <ListItem 
+                    key={index.id}
+                    sx={{
                         bgcolor: currentLocation.pathname === index.path
                             ? theme.palette.backgroundButtons.main
                             : null

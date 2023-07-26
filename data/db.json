@@ -1,0 +1,14 @@
+{
+  "MyData": [
+    {
+      "amount": 100,
+      "transactions": "Ea Fc 24",
+      "id": 1
+    },
+    {
+      "amount": 80,
+      "transactions": "Spider-man 2",
+      "id": 2
+    }
+  ]
+}
