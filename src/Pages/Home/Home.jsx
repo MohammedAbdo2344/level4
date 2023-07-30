@@ -9,23 +9,27 @@ const Home = () => {
             .then(response => response.json())
             .then((data) => setMyData(data));
     }, [])
-    console.log(myData)
+
+
+
+    let totalPrice = 0;
     return (
         <Box>
             {
                 myData.map((item) => {
+                    totalPrice += item.amount
                     return (
                         <Paper
-                        key={item.id} 
-                        sx={{
-                            position: "relative",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            width: "366px",
-                            mt: "55px",
-                            pt: "27px",
-                            pb: "8px"
-                        }}>
+                            key={item.id}
+                            sx={{
+                                position: "relative",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                width: "366px",
+                                mt: "55px",
+                                pt: "27px",
+                                pb: "8px"
+                            }}>
                             <Typography sx={{
                                 ml: "16px",
                                 fontSize: "1.3em"
@@ -35,16 +39,21 @@ const Home = () => {
                                 fontSize: "1.4em",
                                 opacity: "0.8"
                             }} variant="h6">${item.amount}</Typography>
-                            <IconButton 
-                            onClick={()=>{
-                                fetch(`http://localhost:3100/MyData/${item.id}`,{method: "DELETE",})
-                                window.location.reload();
-                            }}
-                             sx={{
-                                position: "absolute",
-                                top: "0",
-                                right: "0"
-                            }} aria-label="Close Icon">
+
+                            <IconButton
+                                onClick={() => {
+                                    fetch(`http://localhost:3100/MyData/${item.id}`, { method: "DELETE", })
+                                    // window.location.reload();
+                                    const newArr = myData.filter((itemm) => {
+                                        return itemm.id !== item.id
+                                    })
+                                    setMyData(newArr)
+                                }}
+                                sx={{
+                                    position: "absolute",
+                                    top: "0",
+                                    right: "0"
+                                }} aria-label="Close Icon">
                                 <Close sx={{
                                     fontSize: "20px",
                                 }} />
@@ -53,6 +62,13 @@ const Home = () => {
                     )
                 })
             }
+            <Typography sx={{
+                textAlign: "center",
+                mt: "9%",
+                fontSize: "larger"
+            }} variant="body1" >
+                You spent ${totalPrice}
+            </Typography>
 
         </Box>
     );

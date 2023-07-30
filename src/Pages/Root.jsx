@@ -34,17 +34,8 @@ const Root = () => {
             <CssBaseline />
             <div>
                 <Box sx={{ flexGrow: 1 }}>
-                    <Appbar
-                        drawerWidth={drawerWidth}
-                        showDrawer={showDrawer}
-                    />
-                    <Drawerr
-                        drawerWidth={drawerWidth}
-                        getMyMode={getMyMode}
-                        noneORBlock={noneORBlock}
-                        drawerVariant={drawerVariant}
-                        hideDrawer={hideDrawer}
-                    />
+                    <Appbar {...{drawerWidth,showDrawer}}/>
+                    <Drawerr {...{drawerWidth,getMyMode,noneORBlock,drawerVariant,hideDrawer}}/>
                 </Box>
                 <Box sx={{ ml: { sm: `${drawerWidth}px` }, display: "flex", justifyContent: "center" }} >
                     <Outlet />
